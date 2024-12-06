@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة الحظ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* تنسيق نموذج تسجيل الدخول */
+        .login-container {
+            display: block;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 300px;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+
+        /* تنسيق عجلة الحظ */
+        .wheel-container {
+            display: none;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        #wheel {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 10px solid #ccc;
+            background-image: conic-gradient(#ff0000 0% 25%, #00ff00 25% 50%, #0000ff 50% 75%, #ffcc00 75% 100%);
+            margin: 20px auto;
+        }
+
+        #wheel div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background-color: black;
+            border-radius: 50%;
+            margin-left: -5px;
+            margin-top: -50%;
+        }
+
+        .pay-container {
+            display: none;
+            margin: 20px;
+        }
+
+        .pay-container button {
+            padding: 10px 20px;
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .pay-container button:hover {
+            background-color: #ff7f00;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- نموذج تسجيل الدخول -->
+    <div class="login-container" id="login-container">
+        <h2>تسجيل الدخول</h2>
+        <input type="text" id="username" placeholder="اسم المستخدم">
+        <input type="password" id="password" placeholder="كلمة المرور">
+        <button onclick="login()">دخول</button>
+    </div>
+
+    <!-- عجلة الحظ -->
+    <div class="wheel-container" id="wheel-container">
+        <h2>عجلة الحظ</h2>
+        <div id="wheel">
+            <div id="center"></div>
+        </div>
+        <button onclick="spinWheel()">دور العجلة</button>
+    </div>
+
+    <!-- صفحة الدفع -->
+    <div class="pay-container" id="pay-container">
+        <h2>الدفع</h2>
+        <p>لتتمكن من اللعب، يجب عليك الدفع.</p>
+        <button onclick="pay()">دفع الآن</button>
+    </div>
+
+    <script>
+        // وظيفة تسجيل الدخول
+        function login() {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+
+            // تحقق من صحة بيانات الدخول (هنا مجرد محاكاة)
+            if (username === 'admin' && password === '1234') {
+                // إخفاء نموذج تسجيل الدخول
+                document.getElementById('login-container').style.display = 'none';
+                // عرض عجلة الحظ
+                document.getElementById('wheel-container').style.display = 'block';
+            } else {
+                alert('بيانات الدخول غير صحيحة');
+            }
+        }
+
+        // وظيفة بدء التدوير لعجلة الحظ
+        function spinWheel() {
+            // إخفاء عجلة الحظ وعرض الدفع
+            document.getElementById('wheel-container').style.display = 'none';
+            document.getElementById('pay-container').style.display = 'block';
+        }
+
+        // وظيفة الدفع
+        function pay() {
+            alert('تم الدفع! يمكنك الآن اللعب.');
+            // يمكن هنا إضافة الكود الفعلي للتفاعل مع الدفع
+        }
+    </script>
+</body>
+</html>
